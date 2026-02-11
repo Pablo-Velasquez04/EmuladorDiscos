@@ -5,85 +5,88 @@ import java.util.Random;
 
 
 public class Disco {
-    private static final int TOTAL_BLOCKS = 1024;
-    private boolean[] blocks;
+    private static final int TOTAL_BLOQUES = 1024; // Total de bloques en el disco (1 KB cada uno)
+    private boolean[] bloques; // true = libre, false = ocupado
 
-    //Constructor
+    //Constructor que inicializa todos los bloques como libres
     public Disco() {
-        blocks = new boolean[TOTAL_BLOCKS];
+        bloques = new boolean[TOTAL_BLOQUES]; // true = libre, false = ocupado
     }
 
-    // Inicializa el disco con 70% ocupado
+    //Inicializa el disco con 70% ocupado
     public void initializeDisk() {
-        int occupiedBlocks = (int)(TOTAL_BLOCKS * 0.7);
+        int bloquesOcupados = (int)(TOTAL_BLOQUES * 0.7);  //70% de bloques ocupados
         //Random random = new Random();
 
         // Primero marcar todo libre
-        for (int i = 0; i < occupiedBlocks; i++) {
-            blocks[i] = false;
+        for (int i = 0; i < bloquesOcupados; i++) {
+            bloques[i] = false; //ocupar bloque
         }
-        for (int i = occupiedBlocks; i < TOTAL_BLOCKS; i++) {
-            blocks[i] = true;
+        for (int i = bloquesOcupados; i < TOTAL_BLOQUES; i++) {
+            bloques[i] = true;  // marcar bloque como libre
         }
 
         /*int count = 0;
-        while (count < occupiedBlocks) {
-            int index = random.nextInt(TOTAL_BLOCKS);
-            if (blocks[index]) {
-                blocks[index] = false; // ocupar bloque
+        while (count < bloquesOcupados) {
+            int index = random.nextInt(TOTAL_BLOQUES);
+            if (bloques[index]) {
+                bloques[index] = false; // ocupar bloque
                 count++;
             }
         }*/
     }
 
-    public boolean[] getBlocks() {
-        return blocks;
+    // Obtener el arreglo de bloques
+    public boolean[] getBloques() {
+        return bloques;  // true = libre, false = ocupado
     }
 
-    public int getTotalBlocks() {
-        return TOTAL_BLOCKS;
+    //Obtener el total de bloques
+    public int getBloquesTotales() {
+        return TOTAL_BLOQUES; //total de bloques en el disco
     }
 
     // Guardar estado en disco.txt
-    public void saveToFile(String path) {
+    public void guardarArchivo(String path) {
         try {
-            File file = new File(path);
+            File file = new File(path); 
             file.getParentFile().mkdirs();
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            for (int i = 0; i < TOTAL_BLOCKS; i++) {
-                writer.write(blocks[i] ? "1" : "0");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));  //Abrir archivo para escritura
+            for (int i = 0; i < TOTAL_BLOQUES; i++) {  //escribir estado de cada bloque
+                writer.write(bloques[i] ? "1" : "0");  // 1 = libre, 0 = ocupado
             }
-            writer.close();
+            writer.close();  // Cerrar el archivo
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
     // Cargar estado desde archivo
     public void loadFromFile(String path) {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            String line = reader.readLine();
-            for (int i = 0; i < TOTAL_BLOCKS && i < line.length(); i++) {
-                blocks[i] = (line.charAt(i) == '1');
+            String linea = reader.readLine();
+            for (int i = 0; i < TOTAL_BLOQUES && i < linea.length(); i++) {  // cargar estado de cada bloque desde el archivo
+                bloques[i] = (linea.charAt(i) == '1');  // 1 = libre, 0 = ocupado
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Solo para debug
-    public void printDiskStatus() {
-        int free = 0;
-        int used = 0;
+    //Solo para debug (No se usa en la simulación, IGNORAR JSJS)
+    public void imprimirEstadoDisco() {
+        int free = 0;  // contador de bloques libres
+        int used = 0;  // contador de bloques ocupados
 
-        for (boolean block : blocks) {
-            if (block) free++;
-            else used++;
+        // Contar bloques libres y ocupados
+        for (boolean block : bloques) {
+            if (block) free++;  // bloque libre
+            else used++;  // bloque ocupado
         }
 
+        // Imprimir resultados
         System.out.println("Bloques libres: " + free);
         System.out.println("Bloques ocupados: " + used);
     }
