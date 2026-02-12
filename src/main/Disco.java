@@ -15,26 +15,36 @@ public class Disco {
 
     //Inicializa el disco con 70% ocupado
     public void initializeDisk() {
-        int bloquesOcupados = (int)(TOTAL_BLOQUES * 0.7);  //70% de bloques ocupados
-        //Random random = new Random();
+        int bloquesOcupados = (int)(TOTAL_BLOQUES * 0.7);
+        Random random = new Random();
 
-        // Primero marcar todo libre
-        for (int i = 0; i < bloquesOcupados; i++) {
-            bloques[i] = false; //ocupar bloque
-        }
-        for (int i = bloquesOcupados; i < TOTAL_BLOQUES; i++) {
-            bloques[i] = true;  // marcar bloque como libre
+        // Todo libre primero
+        for (int i = 0; i < TOTAL_BLOQUES; i++) {
+            bloques[i] = true;
         }
 
-        /*int count = 0;
-        while (count < bloquesOcupados) {
-            int index = random.nextInt(TOTAL_BLOQUES);
-            if (bloques[index]) {
-                bloques[index] = false; // ocupar bloque
-                count++;
+        int ocupados = 0;
+
+        while (ocupados < bloquesOcupados) {
+
+            // Posición inicial random
+            int start = random.nextInt(TOTAL_BLOQUES);
+
+            // Tamaño de bloque ocupado (1 a 20)
+            int size = random.nextInt(20) + 1;
+
+            for (int i = start;
+                i < start + size && i < TOTAL_BLOQUES && ocupados < bloquesOcupados;
+                i++) {
+
+                if (bloques[i]) {
+                    bloques[i] = false;
+                    ocupados++;
+                }
             }
-        }*/
+        }
     }
+
 
     // Obtener el arreglo de bloques
     public boolean[] getBloques() {
