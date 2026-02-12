@@ -1,0 +1,25 @@
+==========> Bitmap <=========
+Corrida 1 | Allocacion: 8 ms | Liberacion: 24 ms | Busqueda: 445 ms
+Corrida 2 | Allocacion: 7 ms | Liberacion: 24 ms | Busqueda: 427 ms
+Corrida 3 | Allocacion: 7 ms | Liberacion: 23 ms | Busqueda: 416 ms
+Corrida 4 | Allocacion: 8 ms | Liberacion: 23 ms | Busqueda: 418 ms
+Corrida 5 | Allocacion: 8 ms | Liberacion: 24 ms | Busqueda: 419 ms
+PROMEDIO FINAL Bitmap | Allocacion: 7 ms | Liberacion: 23 ms | Busqueda: 425 ms
+
+==========> ListaSimple <=========
+Corrida 1 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+Corrida 2 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+Corrida 3 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+Corrida 4 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+Corrida 5 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+PROMEDIO FINAL ListaSimple | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+
+==========> ListaDoble <=========
+Corrida 1 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+Corrida 2 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+Corrida 3 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+Corrida 4 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+Corrida 5 | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+PROMEDIO FINAL ListaDoble | Allocacion: 12 ms | Liberacion: 21 ms | Busqueda: 616 ms
+
+LA ESTRUCTURA MÁS EFICIENTE ES: Bitmap
